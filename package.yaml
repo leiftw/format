@@ -27,10 +27,11 @@ dependencies:
 
 library:
   source-dirs: src
-  other-modules:
-    - Util.ReadPMaybe
-    - Util.StrUtil
-    - Util.Util
+  exposed-modules:
+    - Formats
+    - Formed
+    - Forite
+    - Foread
 
 executables:
   format-exe:
