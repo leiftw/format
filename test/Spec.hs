@@ -2,16 +2,13 @@
 
 import Data.Maybe (fromJust)
 
-{-
-import Format
-import Patterns
-import Utils
-import Formed
+import Formats
+
+--import Formed
 
 import Forite
 import Foread
--}
-import Lib
+
 
 fo :: Format String
 fo = F2In const id (FAtom Just id) "_" null (FC_ "the empty string")
