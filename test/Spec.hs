@@ -11,7 +11,7 @@ import Foread
 
 
 fo :: Format String
-fo = F2In const id (FAtom Just id) "_" null (FC_ "the empty string")
+fo = FAtom Just id --F2In const id (FAtom Just id) "_" null (FC_ "the empty string")
 
 
 main :: IO ()
