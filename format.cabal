@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 532ae99eeb46a51182fcf940a02dd8f758c06b05d0ebe44d13e492661b48bc52
+-- hash: 4d3d5f704c805d2328c8e2db1c28315e45ddac680372c28cd7e7a5a425a76a02
 
 name:           format
 version:        0.1.0.0
@@ -27,7 +27,15 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
+      Equivalences
+      Foread
+      Forite
+      Format
+      Formats
+      Formed
+      Operators
+      Patterns
+      Utils
   other-modules:
       Paths_format
   hs-source-dirs:
