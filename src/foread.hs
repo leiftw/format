@@ -8,8 +8,8 @@ import Control.Monad ((>=>))
 
 import Text.ParserCombinators.ReadP (string,sepBy)
 
-import Util.ReadPMaybe (tryParser,preParse)
-import Util.Util (guarded)
+import ReadPMaybe (tryParser,preParse)
+import Util (guarded)
 
 import Format
 import Equivalences

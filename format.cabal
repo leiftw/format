@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: cf26566e1176acbf249a7cb16f6574e0abaf19052a217d6be9f1981b0dee3bfe
+-- hash: fb25cf8e50a5594487ac03da85df081fb5faa135e344636bb2e433b8efcac18c
 
 name:           format
 version:        0.1.0.0
@@ -36,9 +36,6 @@ library
       Format
       Operators
       Patterns
-      Util.ReadPMaybe
-      Util.StrUtil
-      Util.Util
       Utils
       Paths_format
   hs-source-dirs:
@@ -48,6 +45,7 @@ library
     , containers
     , extra
     , multiset
+    , utils
   default-language: Haskell2010
 
 test-suite format-test
@@ -64,4 +62,5 @@ test-suite format-test
     , extra
     , format
     , multiset
+    , utils
   default-language: Haskell2010

@@ -6,7 +6,7 @@ module Forite where
 import Data.Maybe (fromJust)
 import Control.Arrow ((&&&))
 
-import Util.StrUtil (intermap)
+import StrUtil (intermap)
 
 import Format
 import Equivalences

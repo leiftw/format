@@ -3,7 +3,18 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages: []
+packages:
+- completed:
+    size: 3469
+    filepath: .\..\utils\.stack-work\dist\274b403a\utils-0.1.0.0.tar.gz
+    name: utils
+    version: 0.1.0.0
+    sha256: cac4b9edba1afd82d377847d1ba6d8e6f0ec531c18c945a664a90af7e00c70b3
+    pantry-tree:
+      size: 461
+      sha256: a96318c7102ebd25036e6f3427adc6ad22040884e5aa07798888c01f21c0d6ad
+  original:
+    filepath: .\..\utils\.stack-work\dist\274b403a\utils-0.1.0.0.tar.gz
 snapshots:
 - completed:
     size: 563103

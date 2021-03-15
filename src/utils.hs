@@ -6,7 +6,7 @@ import Control.Arrow ((&&&))
 import Numeric.Natural
 import Text.Read (readMaybe)
 
-import Util.Util (replicat)
+import Util (replicat)
 
 import Format
 
