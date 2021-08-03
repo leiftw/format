@@ -13,14 +13,12 @@ data Format a where
  FEmpty :: Format a -- `F(Bottom|Zero)`?
  FUnit :: String -> Format ()
  FConst :: a -> String -> Format a -- information loss!
- FAlt :: Format a -> Format a -> Format a -- completes a semiring
- FFork :: (Eq a) => Format a -> Format a -> Format a -- `Eq` unfortunately necessary, restricts semiring
--- practical
+-- basic
  FAtom :: (String -> Maybe a) -> (a -> String) -> Format a
  FTrans :: (String -> Maybe String) -> (String -> String) -> Format a -> Format a -- hacky
  FPrefix :: String -> Format a -> Format a -- `PreF`?
  FSuffix :: String -> Format a -> Format a -- `SufF`?
- -- product types
+ -- products
  F1 :: (a -> b) -> (b -> a) -> Format a -> Format b
  F2 :: (a -> b -> c) -> (c -> a) -> Format a
                      -> (c -> b) -> Format b -> Format c
@@ -45,11 +43,13 @@ data Format a where
  -- control flow
  FMaybe :: String -> Format a -> Format (Maybe a)
  FEither :: Format l -> Format r -> Format (Either l r) -- rename short?
+ FAlt :: Format a -> Format a -> Format a -- completes semiring
  FCond :: (a -> Bool) -> Format a -> Format a -> Format a
  --FWich :: [(a -> Bool),Format a] -> Format a -> Format a -- experimental for `FCond` chains
  FOptn :: String -> Format Bool -- doubled as pattern
  FBool :: String -> String -> Format Bool -- doubled as pattern
  -- equality
+ FFork :: (Eq a) => Format a -> Format a -> Format a -- `Eq` unfortunately necessary, restricts semiring
  FInJect :: (Eq e) => Format (e,t) -> e -> Format t
  FXcept :: (Eq e) => e -> String -> Format e -> Format e
  FNtry :: (Eq e) => e -> String -> Format e
