@@ -16,6 +16,7 @@ import Equivalences
 
 
 foread :: Format t -> String -> Maybe t
+foread FEmpty = const Nothing
 foread (FAtom i _) = i
 foread (FTrans i _ f) = i >=> foread f
 foread (F1 ab _ fa) = (ab<$>) . foread fa

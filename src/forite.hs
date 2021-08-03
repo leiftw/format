@@ -13,6 +13,7 @@ import Equivalences
 
 
 forite :: Format t -> t -> String
+forite FEmpty = const undefined -- TODO: how would `FAlt` detect `undefined`?
 forite (FAtom _ o) = o
 forite (FTrans _ o f) = o . forite f
 forite (FFork f0 f1) = uncurry(++) . (forite f0

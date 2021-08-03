@@ -17,7 +17,6 @@ import Format
 
 
 formeq :: Format a -> Format a
-formeq FEmpty = undefined -- TODO: `FDict []` requires `Eq`...
 formeq (FUnit s) = FNtry () s -- could be pattern
 formeq (FConst x s) = FAtom (\p -> if p==s then Just x else Nothing) (const s)
                           --(((const x)<$>).guarded(==s))
