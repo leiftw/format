@@ -29,8 +29,10 @@ foread (F4 abcde _ fa _ fb _ fc _ fd) = tryParser (abcde <$> preParse (foread fa
                                                          <*> preParse (foread fb)
                                                          <*> preParse (foread fc)
                                                          <*> preParse (foread fd))
-foread (FFork f0 f1) = \str -> foread f1 str
-                           <|> foread f0 str
+foread (FAlt f0 f1) = \str -> foread f1 str
+                          <|> foread f0 str
+foread (FFork f0 f1) = tryParser ((,) <$> preParse (foread f0)
+                                      <*> preParse (foread f1)) >=> (fst<$>).guarded(uncurry(==))
 foread (FCond b f1 f0) = \str -> (foread f1 str >>= guarded b)
                              <|> (foread f0 str >>= guarded (not.b))
 foread (FInJect fet e) = foread fet >=> (\(e',t') -> if e' == e

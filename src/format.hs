@@ -14,7 +14,7 @@ data Format a where
  FUnit :: String -> Format ()
  FConst :: a -> String -> Format a -- information loss!
  FAlt :: Format a -> Format a -> Format a -- completes a semiring
- FFork :: Format a -> Format a -> Format a
+ FFork :: (Eq a) => Format a -> Format a -> Format a -- `Eq` unfortunately necessary, restricts semiring
 -- practical
  FAtom :: (String -> Maybe a) -> (a -> String) -> Format a
  FTrans :: (String -> Maybe String) -> (String -> String) -> Format a -> Format a -- hacky
