@@ -55,8 +55,8 @@ data Format a where
  FNtry :: (Eq e) => e -> String -> Format e
  FDict :: (Eq e) => [(e,String)] -> Format e -- default never needed
  FMap :: (Ord e) => M.Map e String -> Format e -- default never needed
- -- faster one way, slower the other (need to `assocs` before `swap`)
-                 -- `Set` of tuples?
+ -- `Map` writes asymptotically faster, reads slower because of `assocs`
+ -- `Set` of tuples could also only be sorted for one way
  -- repetition
  FLdbl :: (Foldable f) => ([a] -> f a) -> (f a -> [a])
                        -> String -> Format a -> Format (f a) -- `-> FormListMode ...`

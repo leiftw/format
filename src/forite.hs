@@ -6,6 +6,8 @@ module Forite where
 import Data.Maybe (fromJust)
 import Control.Arrow ((&&&))
 
+import qualified Data.Map as M (lookup)
+
 import StrUtil (intermap)
 
 import Format
@@ -45,6 +47,7 @@ forite (FFork f0 f1) = uncurry(++) . (forite f0
 forite (FInJect fet e) = forite fet . (e,)
 -- repetition
 forite (FDict d) = fromJust . flip lookup d -- intentionally partial
+forite (FMap d) = fromJust . flip M.lookup d -- intentionally partial
 forite (FList sep f) = intermap (forite f) sep
 -- equivalence
 forite f = forite $ formeq f

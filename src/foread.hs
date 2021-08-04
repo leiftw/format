@@ -6,6 +6,8 @@ import Data.Tuple (swap)
 import Control.Applicative ((<|>))
 import Control.Monad ((>=>))
 
+import qualified Data.Map as M (assocs)
+
 import Text.ParserCombinators.ReadP (string,sepBy)
 
 import ReadPMaybe (tryParser,preParse)
@@ -44,6 +46,7 @@ foread (FInJect fet e) = foread fet >=> (\(e',t') -> if e' == e
                                     then Just t' else Nothing)
 -- repetition
 foread (FDict d) = flip lookup (map swap d)
+foread (FMap d) = flip lookup (map swap $ M.assocs d)
 foread (FList sep f) = tryParser $ preParse (foread f) `sepBy` string sep
 -- equivalence
 foread f = foread $ formeq f
