@@ -10,9 +10,6 @@ import Util (replicat)
 
 import Format
 
--- TODO: what decides between `Format` via `formeq`, and `Utils`, and patterns?
--- patterns at least can't contain function application, just constructors
-
 
 readshowform :: (Show sr,Read sr) => Format sr -- rename!
 readshowform = FAtom readMaybe show
