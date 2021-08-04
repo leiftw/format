@@ -9,6 +9,7 @@ import Data.List (stripPrefix)
 import Data.Maybe (fromJust,isNothing)
 import Data.Either (isLeft,fromLeft,fromRight)
 import Control.Arrow ((&&&),first,second)
+import Control.Monad (guard)
 
 import Data.List.Extra (stripSuffix)
 import Data.Tuple.Extra (fst3,snd3,thd3)
@@ -19,9 +20,7 @@ import Format
 formeq :: Format a -> Format a
 -- theoretical
 formeq (FUnit s) = FNtry () s -- could be pattern
-formeq (FConst x s) = FAtom (\p -> if p==s then Just x else Nothing) (const s)
-                          --(((const x)<$>).guarded(==s))
-                          --((>>Just x).guard.(==s))
+formeq (FConst x s) = FAtom ((>>Just x).guard.(==s)) (const s)
 -- basic
 formeq (FPrefix pre f) = FTrans (stripPrefix pre) (pre++) f
 formeq (FSuffix suf f) = FTrans (stripSuffix suf) (++suf) f
