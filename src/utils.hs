@@ -24,7 +24,7 @@ formJust :: Format f -> Format (Maybe f)
 formJust = F1 Just fromJust
 
 formMaybe :: (t -> Format f) -> Maybe t -> Format (Maybe f)
-formMaybe tf Nothing = FConst Nothing "" -- TODO: check `Nothing`, how without `Eq f`?
+formMaybe tf Nothing = FConst Nothing "" -- TODO: write can't fail short of `error`, but should on `isJust`!
 formMaybe tf (Just x) = formJust $ tf x
 --formMaybe tf mt = maybe (FConst Nothing "") (formJust . tf) mt
 
